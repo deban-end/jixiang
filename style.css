@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a2980, #26d0ce);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+.game-container {
+    position: relative;
+    width: 95%;
+    max-width: 800px;
+    height: 90vh;
+    background: rgba(0, 10, 30, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: bold;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    letter-spacing: 1px;
+    padding-top: 10px;
+}
+
+.score-board {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: clamp(18px, 4vw, 22px);
+    font-weight: bold;
+    color: #FFD700;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.egg-icon {
+    font-size: clamp(22px, 5vw, 26px);
+}
+
+.character {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url('ass/jixiang.png') center/contain no-repeat;
+    transition: transform 0.3s ease-out;
+    z-index: 10;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+.egg {
+    position: absolute;
+    width: 45px;
+    height: 65px;
+    background: url('ass/jidan.png') center/contain no-repeat;
+    z-index: 5;
+}
+
+.hatching-egg {
+    position: absolute;
+    width: 45px;
+    height: 65px;
+    background: url('ass/jidan.png') center/contain no-repeat;
+    z-index: 5;
+    animation: pulse 1.2s infinite;
+}
+
+.baby-character {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background: url('ass/jixiang.png') center/contain no-repeat;
+    z-index: 8;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+}
+
+.instructions {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: clamp(14px, 3vw, 16px);
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
+    margin: 0 20px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.6;
+}
+
+.click-effect {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.mobile-notice {
+    display: none;
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    color: #FFD700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .mobile-notice {
+        display: block;
+    }
+    
+    .game-container {
+        height: 85vh;
+    }
+    
+    .instructions {
+        bottom: 70px;
+    }
+}
